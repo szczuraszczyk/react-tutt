@@ -11,5 +11,6 @@ export const Form = () => {
         <div>
             <input type="text" name="city" id="Miasto" />
         </div>
+        <button>Zapisz</button>
     </form>
 }
