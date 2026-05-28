@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Tel } from "./Tel";
 
-export const PersonInfo = (props) => {
+export const PersonInfo = ({ id, name, tel, city, onDelPerson }) => {
   let stateArray = useState(false);
   let isExpanded = stateArray[0];
   let setIsExpanded = stateArray[1];
 
   const buttonEl = (
-    <button onClick={()=> {
+    <button onClick={() => {
       setIsExpanded(!isExpanded);
       // alert("klik")
     }}>{isExpanded ? "Schowaj" : "Pokaż"}</button>
@@ -15,12 +15,13 @@ export const PersonInfo = (props) => {
 
   return (
     <>
-      <h2>{props.name}</h2>
+      <h2>{name}</h2>
       {buttonEl}
       {isExpanded && (
         <>
-          <h3>Telefon: <Tel tel={props.tel} /></h3>
-          {props.city && <h3>Miasto: {props.city}</h3>  /*ternary operator aka if else, można też !== undefined A*/}
+          <h3>Telefon: <Tel tel={tel} /></h3>
+          {city && <h3>Miasto: {city}</h3>  /*ternary operator aka if else, można też !== undefined A*/}
+          <button onClick={() => { onDelPerson(id) }}>Usuń użytkownika</button>
         </>
       )}
       <hr />
