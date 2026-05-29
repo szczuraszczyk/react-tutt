@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Form } from "./components/Form";
 import { PersonInfo } from "./components/PersonInfo";
 
+import "./App.css";
+
 const initialPeople = [
   { name: "Filip", tel: 123456111, city: "Kraków", id: crypto.randomUUID() },
   { name: "Kacper", tel: 123456222, city: "Kraków", id: crypto.randomUUID() },
@@ -39,7 +41,9 @@ function App() {
     <>
       <h1>Lista kontaktów</h1>
       {isFormShown ? (<Form onAddPerson={addPerson} />) : (<button onClick={handleShownFormClick}>Dodaj</button>)}
+      <ul>
       {people.map(person => <PersonInfo key={person.id} id={person.id} name={person.name} tel={person.tel} city={person.city} onDelPerson={delPerson} />)}
+      </ul>
     </>
   )
 }

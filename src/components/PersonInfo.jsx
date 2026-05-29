@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Tel } from "./Tel";
 
+import "./Personinfo.css";
+
 export const PersonInfo = ({ id, name, tel, city, onDelPerson }) => {
   let stateArray = useState(false);
   let isExpanded = stateArray[0];
@@ -14,7 +16,7 @@ export const PersonInfo = ({ id, name, tel, city, onDelPerson }) => {
   )
 
   return (
-    <>
+    <li className={isExpanded ? "active" : ""}>
       <h2>{name}</h2>
       {buttonEl}
       {isExpanded && (
@@ -24,8 +26,7 @@ export const PersonInfo = ({ id, name, tel, city, onDelPerson }) => {
           <button onClick={() => { onDelPerson(id) }}>Usuń użytkownika</button>
         </>
       )}
-      <hr />
-    </>
+    </li>
   )
 }
 
